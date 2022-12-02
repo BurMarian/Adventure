@@ -1,0 +1,33 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+@import "../colors.scss";
+
+.back-to-top-btn {
+  height: 47px;
+  width: 47px;
+  color: $white;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  border: none;
+  @include ds-position(center, center);
+  @include position(fixed, unset, 20px, 20px, unset);
+  z-index: $z-index-btn-to-top;
+  opacity: 0;
+  transform: translateY(100px);
+  @include transition(0.3s);
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  & > svg {
+    fill: $white;
+    @include transition(0.3s);
+  }
+}
+
+.showBtn {
+  opacity: 1;
+  transform: translateY(0);
+}

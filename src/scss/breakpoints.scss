@@ -1,0 +1,24 @@
+$breakpoint0: 0px;
+$breakpoint320: 320px;
+$breakpoint400: 400px;
+$breakpoint480: 480px;
+$breakpoint576: 576px;
+$breakpoint640: 640px;
+$breakpoint768: 768px;
+$breakpoint992: 992px;
+$breakpoint1200: 1200px;
+$breakpoint1400: 1400px;
+
+// array of breakpoints, breakpoints are used in mixins
+$breakpoints: (
+  $breakpoint0: $breakpoint0,
+  $breakpoint320: $breakpoint320,
+  $breakpoint400: $breakpoint400,
+  $breakpoint480: $breakpoint480,
+  $breakpoint576: $breakpoint576,
+  $breakpoint640: $breakpoint640,
+  $breakpoint768: $breakpoint768,
+  $breakpoint992: $breakpoint992,
+  $breakpoint1200: $breakpoint1200,
+  $breakpoint1400: $breakpoint1400,
+);

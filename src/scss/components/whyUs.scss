@@ -1,0 +1,67 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+// why us section
+#why-us-section {
+  @include position(relative);
+
+  &::before {
+    content: "";
+    height: 350px;
+    width: 100%;
+    background-image: url("../assets/images/services-right-dec.png");
+    background-repeat: round;
+    background-size: cover;
+    @include position(absolute, unset, unset, -60%, 0);
+    z-index: $z-index-ps-el;
+  }
+
+  .why-us-section--content {
+    // title
+    .section-content-title {
+    }
+
+    // boxes
+    .section-content-boxes {
+      .section-content-box {
+        text-align: center;
+        @include ds-position(center, center, column);
+        row-gap: $gap;
+        padding: $pd-content;
+        @include transition(0.3s);
+
+        // media
+        @include media-breakpoint-down($breakpoint480) {
+          padding: 0;
+        }
+
+        // box media
+        &__media {
+          height: 60px;
+          width: 60px;
+          border-radius: 50%;
+          border: 2px solid $primary-main;
+          @include ds-position(center, center);
+          @include position(relative);
+          padding: $pd-content;
+
+          & > img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+
+        // title
+        &__title {
+        }
+
+        // subtitle
+        &__subtitle {
+          color: $grey500;
+        }
+      }
+    }
+  }
+}

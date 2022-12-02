@@ -1,0 +1,213 @@
+@import "../colors.scss";
+@import "../mixins.scss";
+
+// local variables
+$gap: 15px;
+
+#packages-section {
+  overflow: hidden;
+
+  .packages--content {
+    // media
+    @include media-breakpoint-down($breakpoint480) {
+      max-width: 100%;
+    }
+
+    // title
+    .packages--title {
+    }
+
+    // cards
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(8, 300px);
+      grid-template-areas:
+        "desert safari safari"
+        "desert pyramid flying"
+        "volcano volcano flying"
+        "volcano volcano hiking"
+        "cruise amazon hiking"
+        "cruise ice-cave ice-cave"
+        "waterfall ice-cave ice-cave"
+        "waterfall diving diving";
+      column-gap: $gap;
+      row-gap: $gap;
+
+      // media
+      @include media-breakpoint-down($breakpoint992) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(10, 300px);
+        grid-template-areas:
+          "desert safari"
+          "desert pyramid"
+          "volcano volcano"
+          "volcano volcano"
+          "diving cruise"
+          "waterfall cruise"
+          "waterfall ice-cave"
+          "flying flying"
+          "flying flying"
+          "hiking amazon";
+      }
+
+      @include media-breakpoint-down($breakpoint640) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(7, 300px);
+        grid-template-areas:
+          "safari pyramid"
+          "desert desert"
+          "volcano flying"
+          "cruise cruise"
+          "diving waterfall"
+          "ice-cave ice-cave"
+          "hiking amazon";
+      }
+
+      @include media-breakpoint-down($breakpoint480) {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(11, 300px);
+        grid-template-areas:
+          "safari"
+          "pyramid"
+          "desert"
+          "volcano"
+          "flying"
+          "cruise"
+          "diving"
+          "waterfall"
+          "ice-cave"
+          "hiking"
+          "amazon";
+      }
+
+      .scene {
+        height: 100%;
+        perspective: 1000px;
+
+        &--card__hiking {
+          grid-area: hiking;
+        }
+        &--card__safari {
+          grid-area: safari;
+        }
+        &--card__desert {
+          grid-area: desert;
+        }
+        &--card__diving {
+          grid-area: diving;
+        }
+        &--card__cruise {
+          grid-area: cruise;
+        }
+        &--card__flying {
+          grid-area: flying;
+        }
+        &--card__amazon {
+          grid-area: amazon;
+        }
+        &--card__volcano {
+          grid-area: volcano;
+        }
+        &--card__pyramid {
+          grid-area: pyramid;
+        }
+        &--card__ice-cave {
+          grid-area: ice-cave;
+        }
+        &--card__waterfall {
+          grid-area: waterfall;
+        }
+      }
+
+      .card {
+        height: 100%;
+        width: 100%;
+        @include position(relative);
+        transform-style: preserve-3d;
+        transform-origin: center right;
+        transition: transform 1s;
+        cursor: pointer;
+      }
+
+      .card__face {
+        height: 100%;
+        width: 100%;
+        color: $white;
+        text-align: center;
+        backface-visibility: hidden;
+        @include ds-position(unset, unset, column);
+        @include position(absolute);
+        overflow: hidden;
+        //
+        box-shadow: 0 0 10px #00000020;
+        cursor: pointer;
+
+        // card header
+        .card-header {
+          width: 100%;
+          color: $white;
+          background-color: $error-light;
+          @include ds-position(center, center);
+          @include position(relative);
+          padding: $pd-content * 1.5;
+
+          & > p {
+            font-weight: 600;
+            font-size: 24px;
+          }
+
+          &::after {
+            content: "";
+            height: 15px;
+            width: 15px;
+            background-color: $error-light;
+            @include position(absolute, unset, unset, -7px, unset);
+            rotate: 45deg;
+          }
+        }
+
+        // card body
+        .card-body {
+          background-color: $white;
+          @include ds-position(center, center, column);
+          flex: 1;
+          gap: 30px;
+        }
+
+        .description {
+          color: $black;
+          font-size: 18px;
+          text-align: justify;
+          padding: $pd-content;
+        }
+
+        .price {
+          color: $grey700;
+          font-weight: 600;
+          font-size: 30px;
+          @include position(relative);
+        }
+      }
+
+      .card__face--front {
+        & > h4 {
+          background: rgba(0, 0, 0, 0.3);
+          @include ds-position(center, center);
+          @include position(absolute, 0, 0, 0, 0);
+          @include transition(0.3s);
+
+          &:hover {
+            background: rgba(0, 0, 0, 0.5);
+          }
+        }
+
+        & > video {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}

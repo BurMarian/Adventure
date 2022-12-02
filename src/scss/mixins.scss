@@ -1,0 +1,115 @@
+@import "./breakpoints.scss";
+
+// ** gradient backgrounds
+@mixin bg-gradient($gradient) {
+  background: linear-gradient($gradient);
+}
+
+// ** position
+@mixin position($property: relative, $top: unset, $right: unset, $bottom: unset, $left: unset) {
+  position: $property;
+
+  @if $top != unset {
+    top: $top;
+  }
+
+  @if $right != unset {
+    right: $right;
+  }
+
+  @if $bottom != unset {
+    bottom: $bottom;
+  }
+
+  @if $left != unset {
+    left: $left;
+  }
+}
+
+// ** transition
+@mixin transition($time) {
+  -webkit-transition: all $time ease-out 0.1s;
+  -moz-transition: all $time ease-out 0.1s;
+  -ms-transition: all $time ease-out 0.1s;
+  -o-transition: all $time ease-out 0.1s;
+  transition: all $time ease-out 0.1s;
+}
+
+// ** box-shadow
+@mixin box-shadow($value) {
+  -webkit-box-shadow: $value;
+  -moz-box-shadow: $value;
+  box-shadow: $value;
+}
+
+// ** display position
+@mixin ds-position($justifyPos: unset, $alignPos: unset, $flexDir: unset) {
+  display: flex;
+
+  @if $justifyPos != unset {
+    justify-content: $justifyPos;
+  }
+
+  @if $alignPos != unset {
+    align-items: $alignPos;
+  }
+
+  @if $flexDir != unset {
+    flex-direction: $flexDir;
+  }
+}
+
+// ** image position
+@mixin image-position($obj-fit: cover, $obj-pos: unset) {
+  @if $obj-fit != unset {
+    object-fit: $obj-fit;
+  }
+
+  @if $obj-pos != unset {
+    object-position: $obj-pos;
+  }
+}
+
+// ** spacing from items
+@mixin spacing($number: 1) {
+  gap: $number * 4px;
+}
+
+// ** calc
+@mixin calc($property, $expression) {
+  #{$property}: calc(#{$expression});
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -webkit-calc(#{$expression});
+}
+
+// ** media queries
+@mixin media-breakpoint-up($breakpoint) {
+  @if map_has_key($breakpoints, $breakpoint) {
+    $value: map-get($breakpoints, $breakpoint);
+
+    @media (min-width: $value) {
+      @content;
+    }
+  }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+  @if map_has_key($breakpoints, $breakpoint) {
+    $value: map-get($breakpoints, $breakpoint);
+
+    @media (max-width: ($value - 0.2px)) {
+      @content;
+    }
+  }
+}
+
+@mixin media-breakpoint-between($breakpoint-start: "xs", $breakpoint-end) {
+  @if map_has_key($breakpoints, $breakpoint-end) {
+    $value-start: map-get($breakpoints, $breakpoint-start);
+    $value-end: map-get($breakpoints, $breakpoint-end);
+
+    @media (min-width: $value-start) and (max-width: ($value-end - 0.2px)) {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+@import "../colors.scss";
+@import "../mixins.scss";
+@import "../variables.scss";
+
+#clients-feedback-section {
+  @include position(relative);
+
+  &::after {
+    content: "";
+    height: 300px;
+    width: 300px;
+    background-image: url("../assets/images/about-shape-1.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include position(absolute, unset, 0, -50%, unset);
+    z-index: $z-index-ps-el;
+  }
+
+  .clients-feedback-section--content {
+    // title
+    .section-content-title {
+    }
+
+    // boxes
+    .section-content-boxes {
+      .section-content-box {
+        @include ds-position(center, unset);
+        row-gap: $gap;
+        column-gap: $gap;
+        padding: $pd-content;
+        @include transition(0.3s);
+
+        // media
+        @include media-breakpoint-down($breakpoint480) {
+          padding: 0;
+        }
+
+        // box media
+        &__media {
+          height: 60px;
+          width: 60px;
+          border-radius: 50%;
+          @include position(relative);
+
+          & > img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+
+        // box text
+        &__text {
+          @include ds-position(unset, unset, column);
+          flex: 1;
+
+          // title
+          .section-content-box__title {
+          }
+
+          // subtitle
+          .section-content-box__subtitle {
+            color: $grey500;
+          }
+        }
+      }
+    }
+  }
+}

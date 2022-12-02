@@ -1,0 +1,77 @@
+@import "../colors.scss";
+@import "../mixins.scss";
+@import "../variables.scss";
+
+// local variables
+$gap: 20px;
+
+// contact section
+#contact-section {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+
+  .contact-section--content {
+    // title
+    .section-content-title {
+    }
+
+    // boxes
+    .section-content-boxes {
+      .section-content-box {
+        @include ds-position(space-between, unset);
+        row-gap: $gap;
+        column-gap: $gap;
+
+        // media
+        @include media-breakpoint-down($breakpoint480) {
+          @include ds-position(unset, unset, column-reverse);
+        }
+
+        // box form
+        &__form {
+          width: 50%;
+          @include ds-position(center, unset, column);
+          row-gap: $gap;
+          column-gap: $gap;
+
+          // media
+          @include media-breakpoint-down($breakpoint480) {
+            width: 100%;
+          }
+
+          & > input,
+          & > textarea {
+            border: 1px solid $grey300;
+            border-radius: 20px;
+            outline: none;
+            resize: vertical;
+            transition: 0.3s;
+            padding: 15px;
+
+            &:focus {
+              border: 1px solid $primary-main;
+            }
+          }
+
+          & > textarea {
+            min-height: 200px;
+          }
+
+          & > button {
+            padding: 12px;
+          }
+        }
+
+        // box media
+        &__media {
+          @include ds-position();
+          flex: 1;
+
+          & > svg {
+          }
+        }
+      }
+    }
+  }
+}

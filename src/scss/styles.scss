@@ -1,0 +1,67 @@
+// ** global styles
+@import "./breakpoints.scss";
+@import "./colors.scss";
+@import "./mixins.scss";
+@import "./reset.scss";
+@import "./variables.scss";
+@import "./fonts.scss";
+
+// ** common styles
+@import "./common.scss";
+
+// ** components
+@import "./components/header.scss";
+@import "./components/whyUs.scss";
+@import "./components/destinations.scss";
+@import "./components/tours.scss";
+@import "./components/feedbacks.scss";
+@import "./components/contacts.scss";
+@import "./components/footer.scss";
+
+@import "./components/modal.scss";
+@import "./components/btnToTop.scss";
+
+// ** body
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+.container_heigth,
+.container_width {
+  display: flex;
+  flex-direction: column;
+}
+
+.container_heigth {
+  height: calc(100vh - $ht-header);
+  max-height: 1000px;
+}
+
+.container_width {
+  width: 992px;
+  max-width: 97%;
+  margin: 0 auto;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.container_fluid {
+  width: 100%;
+}
+
+// app
+.app {
+  height: 100%;
+  width: 100%;
+  @include position(relative);
+}
+
+// main
+.main {
+}

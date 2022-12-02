@@ -1,0 +1,129 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+@import "./colors.scss";
+
+// local variables
+$gap: 15px;
+
+// logo
+.logo {
+  color: $primary-light;
+  font-size: 30px;
+  text-decoration: none;
+  font-family: "Logo", cursive;
+  outline: none;
+  @include ds-position(center, center);
+}
+
+// menu
+.menu-list {
+  @include ds-position();
+  gap: 30px;
+
+  & > li {
+  }
+
+  // a
+  &--item__link {
+    color: $white;
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1.2px;
+    font-weight: 500;
+    outline: none;
+    @include transition(0.3s);
+
+    &:hover {
+      color: $primary-light;
+      @include transition(0.3s);
+    }
+  }
+}
+
+// section
+.section {
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  @include ds-position(unset, unset, column);
+  flex: 1;
+  padding: $pdY 0;
+}
+
+.section-auto {
+  width: 100%;
+  @include ds-position(unset, unset, column);
+  flex: 1;
+  padding: 60px 0;
+}
+
+.section-title {
+  color: $grey800;
+  text-align: center;
+  font-size: 35px;
+  margin-bottom: 60px;
+}
+
+.section-button {
+  color: $white;
+  background-color: $primary-main;
+  text-transform: capitalize;
+  border: transparent;
+  border-radius: 20px;
+  border: 2px solid $primary-main;
+  padding: 10px 30px;
+  cursor: pointer;
+  @include transition(0.3s);
+
+  &:hover {
+    color: $primary-main;
+    background-color: $white;
+    border: 2px solid $primary-main;
+  }
+}
+
+#why-us-section,
+#clients-feedback-section {
+  background: linear-gradient(30deg, $white, $grey100, $grey200, $grey300);
+
+  .why-us-section--content,
+  .clients-feedback-section--content {
+    @include ds-position(unset, unset, column);
+
+    .section-content-boxes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-areas: "first second third";
+      column-gap: $gap;
+      row-gap: $gap;
+
+      // media
+      @include media-breakpoint-down($breakpoint768) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+          "first second"
+          "third third";
+      }
+
+      @include media-breakpoint-down($breakpoint480) {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas:
+          "first"
+          "second"
+          "third";
+      }
+
+      .section-content-box__first {
+        grid-area: first;
+      }
+      .section-content-box__second {
+        grid-area: second;
+      }
+      .section-content-box__third {
+        grid-area: third;
+      }
+    }
+  }
+}
