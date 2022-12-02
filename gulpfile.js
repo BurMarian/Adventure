@@ -65,4 +65,4 @@ function browserSync(done) {
 
 // running task oner after another
 exports.devlop = gulp.series(delDist, images, videos, convertSass, fonts, js, browserSync);
-exports.default = gulp.series(images, videos, convertSass, fonts, js, browserSync);
+exports.deploy = gulp.series(images, videos, convertSass, fonts, js);
