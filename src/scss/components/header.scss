@@ -106,7 +106,7 @@ $gap: 20px;
         border-radius: 50%;
         @include position(fixed, unset, 0px);
         cursor: pointer;
-        z-index: $z-index-hd;
+        z-index: $z-index-hd-btn;
       }
       .nav-btn i {
         height: 3px;
